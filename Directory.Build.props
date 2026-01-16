@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+	<PropertyGroup>
+		<PlatformTarget>x64</PlatformTarget>
+		<OutDir>$(SolutionDir)\bin\$(Configuration)\</OutDir>
+	</PropertyGroup>
+	
+	<Import Project="Paths.props"/>
+	
+	<!-- Differentiate managed folder names and app IDs. -->
+	<PropertyGroup>
+		<SteamAppId Condition="$(Configuration.StartsWith('MSC'))">516750</SteamAppId>
+		<SteamAppId Condition="$(Configuration.StartsWith('MWC'))">4164420</SteamAppId>
+		<ManagedFolder Condition="$(Configuration.StartsWith('MSC'))">$(MSC)\mysummercar_Data\Managed</ManagedFolder>
+		<ManagedFolder Condition="$(Configuration.StartsWith('MWC'))">$(MWC)\mywintercar_Data\Managed</ManagedFolder>
+	</PropertyGroup>
+
+	<!-- This assumes the user has mods folder set to be in the game directory. -->
+	<PropertyGroup>
+		<ModsFolder>$(ManagedFolder)\..\..\Mods</ModsFolder>
+		<AssetsFolder>$(ModsFolder)\Assets\BeerMP</AssetsFolder>
+	</PropertyGroup>
+
+	<!-- Check if the selected game directory exists. -->
+	<Target Name="VerifyGamePath" BeforeTargets="ResolveAssemblyReferences">
+		<Error Condition="!Exists('$(ManagedFolder)')" Text="'$(ManagedFolder)\..\..\' does not exist! Edit the path in Paths.props, reload the solution, and try again."/>
+	</Target>
+	
+	<!-- Copy output to the mods folder. -->
+	<Target Name="CopyToGame" AfterTargets="Build">
+		<Message Importance="high" Text="Copying $(TargetFileName) to $(ModsFolder)" Condition="'$(GameRuntimeDataLibrary)' != 'true'"/>
+		<Message Importance="high" Text="Copying $(TargetFileName) to $(AssetsFolder)" Condition="'$(GameRuntimeDataLibrary)' == 'true'"/>
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsFolder)" Condition="'$(GameRuntimeDataLibrary)' != 'true'"/>
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(AssetsFolder)" Condition="'$(GameRuntimeDataLibrary)' == 'true'"/>
+	</Target>
+	
+	<!-- Launch game via Steam if we're debugging. -->
+	<Target Name="LaunchGame" AfterTargets="CopyToGame" Condition="$(Configuration.Contains('Debug'))">
+		<Exec Command="start steam://rungameid/$(SteamAppId)" IgnoreExitCode="true"/>
+	</Target>
+</Project>

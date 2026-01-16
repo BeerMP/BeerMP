@@ -1,0 +1,24 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="MSC_Debug" />
+    <BuildType Name="MWC_Debug" />
+    <BuildType Name="Release" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="Paths.props" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="BeerMP.MSC/BeerMP.MSC.csproj">
+    <Platform Project="x64" />
+    <Build Solution="MWC_Debug|*" Project="false" />
+  </Project>
+  <Project Path="BeerMP.MWC/BeerMP.MWC.csproj">
+    <BuildType Solution="MSC_Debug|*" Project="MWC_Debug" />
+    <Platform Project="x64" />
+    <Build Solution="MSC_Debug|*" Project="false" />
+  </Project>
+  <Project Path="BeerMP/BeerMP.csproj">
+    <Platform Project="x64" />
+  </Project>
+</Solution>

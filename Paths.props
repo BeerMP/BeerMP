@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+	<!-- If you have installed your games elsewhere from the default path, then set them here. -->
+	<PropertyGroup>
+		<MSC>C:\Program Files (x86)\Steam\steamapps\common\My Summer Car</MSC>
+		<MWC>C:\Program Files (x86)\Steam\steamapps\common\My Winter Car</MWC>
+	</PropertyGroup>
+</Project>
