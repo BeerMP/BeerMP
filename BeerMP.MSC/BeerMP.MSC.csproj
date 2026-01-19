@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-		<GameRuntimeDataLibrary>true</GameRuntimeDataLibrary>
+    <GameRuntimeDataLibrary>true</GameRuntimeDataLibrary>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MSC_Debug|x64' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +43,13 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BeerMP\BeerMP.csproj">
+      <Project>{9d7c26a7-ecc5-4d90-9392-bb9469ae5346}</Project>
+      <Name>BeerMP</Name>
+      <Private>False</Private>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

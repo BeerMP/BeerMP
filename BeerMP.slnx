@@ -6,19 +6,20 @@
     <Platform Name="x64" />
   </Configurations>
   <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
     <File Path="Paths.props" />
     <File Path="README.md" />
   </Folder>
-  <Project Path="BeerMP.MSC/BeerMP.MSC.csproj">
+  <Project Path="BeerMP.MSC/BeerMP.MSC.csproj" Id="1f2fcdc0-472c-4d48-8149-e62ec09b30f5">
     <Platform Project="x64" />
     <Build Solution="MWC_Debug|*" Project="false" />
   </Project>
-  <Project Path="BeerMP.MWC/BeerMP.MWC.csproj">
+  <Project Path="BeerMP.MWC/BeerMP.MWC.csproj" Id="5344c4f6-58b5-41e7-8129-956eba51fbe2">
     <BuildType Solution="MSC_Debug|*" Project="MWC_Debug" />
     <Platform Project="x64" />
     <Build Solution="MSC_Debug|*" Project="false" />
   </Project>
-  <Project Path="BeerMP/BeerMP.csproj">
+  <Project Path="BeerMP/BeerMP.csproj" Id="9d7c26a7-ecc5-4d90-9392-bb9469ae5346">
     <Platform Project="x64" />
   </Project>
 </Solution>
